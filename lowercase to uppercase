@@ -1,0 +1,18 @@
+lower[a-z]
+%{
+#include<stdio.h>
+%}
+{lower}{printf("%c",yytext[0] - 32);}
+\n ECHO;
+. ECHO;
+%%
+
+int main()
+{
+  printf("lowercase to uppercase");
+  yylex();
+  return 0;
+}
+int yywrap(){
+   return 1;
+}
